@@ -2,11 +2,14 @@
 # -*- coding:utf-8 -*-
 
 import socket
+import urllib.request
+import urllib.error
 
 from aux import printing_format as p_f
 from aux import my_variables as m_v
+from steps import step
 
-class Step5(Step):
+class Step5(step.Step):
 
     def __init__(self):
         super().__init__()
@@ -20,7 +23,7 @@ class Step5(Step):
 
         proxy_code = instructions[:5]
 
-        socketserver = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   #tcp
+        socketserver = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   #internet, tcp
         socketserver.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #reusable port
         socketserver.bind(('', my_TCPserver_port))
         socketserver.listen(30)
@@ -37,7 +40,7 @@ class Step5(Step):
         print("{}{}{}{}".format(yellow_nd_bold,
                                 colorfill,
                                 msg.decode(),
-                                end_format)
+                                end_format))
 
         socketserver.close()
         sockPROXY.close()

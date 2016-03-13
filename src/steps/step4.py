@@ -2,18 +2,21 @@
 # -*- coding:utf-8 -*-
 
 import socket
+import struct
+import time
 
 from aux import printing_format as p_f
 from aux import my_variables as m_v
+from steps import step
 
-class Step4():
+class Step4(step.Step):
 
     def __init__(self):
-        pass
+        super().__init__()
 
     def run(self, downloaded_file):
 
-        print("{0}{1}{2}".format(green_nd_bold,
+        print("{}{}{}".format(green_nd_bold,
                                 "#### STEP 4: ICMP ECHO REQUEST\n",
                                 end_format))
 

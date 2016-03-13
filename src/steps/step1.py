@@ -6,17 +6,18 @@ import threading
 
 from aux import printing_format as p_f
 from aux import my_variables as m_v
+from steps import step
 
 mutex = threading.Event()   #mutex semaphore for thread syncronizing
 
-class Step1(Step):
+class Step1(step.Step):
 
     def __init__(self):
         super().__init__()
 
     def run(self, server_code):
         print("{0}{1}{2}".format(p_f.green_nd_bold,
-                                "#### STEP 1: UDP THREADING SERVER\n",
+                                "\n#### STEP 1: UDP THREADING SERVER\n",
                                 p_f.end_format))
 
         t=threading.Thread(target=myUDPserver)

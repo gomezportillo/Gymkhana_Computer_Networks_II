@@ -5,11 +5,12 @@ import socket
 
 from aux import printing_format as p_f
 from aux import my_variables as m_v
+from steps import step
 
-class Step2():
+class Step2(step.Step):
 
     def __init__(self):
-        pass
+        super().__init__()
 
     def run(self):
         print("{}{}{}".format(green_nd_bold,
@@ -54,14 +55,14 @@ class Step2():
                     dispared_parenthesis-=1
             i+=1
 
-        return dispared_parenthesis == 0:
+        return dispared_parenthesis == 0
 
     def compute_operation(self, op):
 
         str_len = len(op)
         i = 0
 
-        print("{0}{1}".format("Original----->", op)
+        print("{0}{1}".format("Original----->", op))
 
         while i<str_len:
           if op[i] == '/':
@@ -74,11 +75,11 @@ class Step2():
         try:
             result = str(eval(op))
         except SyntaxError as err:
-            print("{0}{1}{3}".format(red_nd_bold,
+            print("{}{}{}".format(red_nd_bold,
                                     "Error recieving operations. Aborting program.\n",
-                                    end_format)
-            sys.exit()
+                                    end_format))
+            sys.exit(1)
 
-        print("{0}{1}{2}{3}".format("Worked out--->", op, "\t\tResult: ". result)
+        print("{}{}{}{}".format("Worked out--->", op, "\t\tResult: ", result))
 
         return "({})".format(result)

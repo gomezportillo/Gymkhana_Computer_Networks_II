@@ -23,26 +23,21 @@ from aux import my_variables as m_v
 from aux import printing_format as p_f
 
 import sys
-import socket
-import time
-import urllib.request
-import urllib.error
-import struct
 
 if len(sys.argv) != 1:
     print(__doc__.format(__file__))
     sys.exit(1)
 
-print("{}{}{}{}{}".format(p_f.green_nd_bold, "#### PYTHON GYMKHANA\n",
-                          p_f.blue_nd_bold, "Pedro Manuel Gómez-Portillo López, 2ºA",
+print("{}{}{}{}{}".format(p_f.green_nd_bold, "\n#### PYTHON GYMKHANA\n",
+                          p_f.blue_nd_bold, "\nPedro Manuel Gómez-Portillo López, 2ºA",
                           p_f.end_format))
 
 step0 = step0.Step0()
-step1 = step0.Step1()
-step2 = step0.Step2()
-step3 = step0.Step3()
-step4 = step0.Step4()
-step5 = step0.step5()
+step1 = step1.Step1()
+step2 = step2.Step2()
+step3 = step3.Step3()
+step4 = step4.Step4()
+step5 = step5.Step5()
 
 try:
     server_code = step0.run()
@@ -57,5 +52,7 @@ try:
 
     step5.run(http_instructions)
 
+    sys.exit(0)
+
 except KeyboardInterrupt:
-    pass
+    raise

@@ -5,17 +5,18 @@ import socket
 
 from aux import printing_format as p_f
 from aux import my_variables as m_v
+from steps import step
 
-class Step3():
+class Step3(step.Step):
 
     def __init__(self):
-        pass
+        super().__init__()
 
     def run(self, instructions):
 
-        print("{0}{1}{2}".format(green_nd_bold,
+        print("{}{}{}".format(green_nd_bold,
                                 "\n#### STEP 3: DOWNLOADING FILES THOUGH HTTP\n",
-                                end_format)
+                                end_format))
 
         #print(instructions)
         url = uclm_url2 + str(instructions[:5])
@@ -31,5 +32,5 @@ class Step3():
         except (URLError, HTTPError) as err:
             print("{}{}{}".format(red_nd_bold,
                                  err.__str__(),
-                                 end_format)
-            sys.exit()
+                                 end_format))
+            sys.exit(1)

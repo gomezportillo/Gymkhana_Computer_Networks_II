@@ -1,0 +1,29 @@
+10735
+Â¡Has superado la etapa 0!
+PuntuaciÃ³n provisional total: 0 puntos.
+(Se indica la puntuaciÃ³n mÃ¡xima en el mejor caso)
+
+Servidor de la prÃ¡ctica de la asignatura de Redes.
+VersiÃ³n 0.20150626.
+
+Recuerda que puedes ver el log del servidor en:
+http://atclab.esi.uclm.es/ginkana/
+
+Se aconseja al alumno utilizar una codificaciÃ³n UTF-8 en su terminal para evitar
+problemas.
+
+Etapa 1: UDP
+------------
+
+- Crea un servidor UDP en tu mÃ¡quina (en el puerto que quieras)
+- EnvÃ­a un mensaje al servidor UDP atclab.esi.uclm.es:2000
+  indicando el identificador "10735" y el puerto en el que has creado
+  tu servidor UDP, separados por un espacio.
+  Ejemplo: "10735 7777" (sin comillas).
+
+Tu servidor UDP recibirÃ¡ las instrucciones para continuar.
+Dispones de 4 segundos.
+
+Pistas:
+- Comprueba que es posible conectar a tu servidor UDP desde una mÃ¡quina con
+  IP pÃºblica (usa netcat para eso).

@@ -24,7 +24,7 @@ class Step1(step.Step):
         t.start()
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #internet, udp
-        my_msg_str = server_code+" "+str(my_UDPserver_port)
+        my_msg_str = "{} {}".format(server_code, str(my_UDPserver_port))
         print("My message to the UCML server: {0}\n".format(my_msg_str))
         sock.sendto(my_msg_str.encode(), (uclm_url, uclm_port1))
 

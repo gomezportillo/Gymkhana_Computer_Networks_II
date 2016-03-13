@@ -1,0 +1,14 @@
+35884
+¡Has superado la etapa 2!
+
+Etapa 3: Cliente HTTP
+---------------------
+
+- Debes descargar el fichero
+  "http://atclab.esi.uclm.es:5000/35884".
+
+El fichero contiene las instrucciones para continuar.
+Dispones de 6 segundos.
+
+Pistas:
+- Puedes utilizar el módulo urllib

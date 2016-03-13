@@ -1,0 +1,43 @@
+45936
+¡Has superado la etapa 4!
+
+Etapa 5: Proxy Web
+------------------
+
+- Crea un servidor Proxy HTTP en tu computadora (en el puerto de tu elección).
+- Tu servidor recibirá una cantidad aleatoria de peticiones HTTP para
+  descargar URLs ajenas, Deberá descargar dichos recursos (usando HTTP) y
+  devolverlos al cliente que los pide.
+
+ +--------+        +--------------+       +-------------+
+ | Client |        | Proxy server |       | HTTP server |
+ +--------+        +--------------+       +-------------+
+      |                    |                     |
+      |  GET(server, url)  |                     |
+      +------------------>+++  connect(server)   |
+      |                   | |------------------->|
+      |                   | |   file: GET(url)   |
+      |      file         | |------------------->|
+      |<------------------+++                    |
+      |                    |                     |
+
+- Crea un socket cliente y envía un mensaje al servidor TCP atclab.esi.uclm.es:9000
+  indicando el identificador "45936" y el puerto en el que has creado
+  tu servidor proxy, separados por un espacio.
+  Ejemplo: "45936 7777".
+- A través de ese mismo socket recibirás más instrucciones o información
+  sobre errores.
+
+Pistas:
+- Cuidado: Tu proxy recibirá peticiones simultaneas y se espera que las
+  sirvas rápidamente. Si tarda demasiado no pasará esta etapa. Para lograrlo
+  crea un servidor concurrente para tu proxy.
+- Puedes probar que tu proxy es correcto ejecutándolo como programa
+  independiente (sin relación con la ginkana) y configurando tu navegador
+  web para que lo use.
+
+Restricciones:
+- No está permitido usar la clase HTTPServer,
+  SimpleHTTPServer.SimpleHTTPRequestHandler ni el módulo http.server.
+
+Dispones de 5 segundos.

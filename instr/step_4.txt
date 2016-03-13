@@ -1,0 +1,33 @@
+78272
+¡Has superado la etapa 3!
+
+Etapa 4: Ping
+-------------
+
+- Debes enviar un mensaje ICMP Echo Request a atclab.esi.uclm.es.
+  La carga útil de dicho mensaje debe incluir, DESPUÉS del contenido
+  habitual, la cadena ASCII "78272".
+
+     +--------------+----------------------------+
+     | Echo Request |                            |
+     | Header       | timestamp(8 bytes) + 78272 |
+     +--------------+----------------------------+
+
+- Recibirás un mensaje ICMP Echo Reply con las instrucciones para
+  continuar.
+
+Dispones de 5 segundos.
+
+Pistas:
+- Usando wireshark, analiza el contenido y tamaño de un mensaje ping
+  convencional. Puedes enviar ping más cortos de lo normal con "ping -s 8".
+- Estudia el tema "Sockets RAW" en el manual de prácticas.
+- Recuerda que para usar sockets raw debes ejecutar el programa con
+  privilegios de administrador.
+- Construye un mensaje ICMP imitando el que has capturado. Idéntico
+  al principio. Si funciona, añade tus cambios.
+- Para construir el mensaje puedes usar struct.pack().
+- Puedes utilizar la función de cálculo de checksum que hay en
+  https://bitbucket.org/arco_group/python-net/src/tip/raw/icmp_checksum.py
+- Construye el mensaje ICMP indicando un 0 en el campo checksum. Calcula el
+  checksum y vuelve a construir el mensaje usando el resultado del cálculo.

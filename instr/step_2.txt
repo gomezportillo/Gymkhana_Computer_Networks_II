@@ -1,0 +1,28 @@
+1934
+¡Has superado la etapa 1!
+
+Etapa 2: Aritmética
+-------------------
+
+- Conecta al servidor TCP atclab.esi.uclm.es:1934
+- Recibirás una cadena de texto con una operación matemática en formato ASCII.
+- La expresión contiene paréntesis y están bien balanceados (hay tantos de
+  apertura como de cierre).
+- Calcula el resultado del a operación y responde a través del socket, colocando
+  la cifra resultante entre paréntesis.
+- El proceso se repite para un número indeterminado de operaciones.
+
+Si todo es correcto, el servidor te dará instrucciones para continuar.
+Dispones de 20 segundos.
+
+Pistas:
+- Los paréntesis son vitales, los espacios triviales.
+- El símbolo '/' representa una división entera.
+- Ejemplo:
+  - Servidor: (2 * (3+ 5))
+  - Cliente:  (16)
+
+Restricciones:
+- No está permitido usar la función eval().
+
+Dispones de 20 segundos.

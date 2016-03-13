@@ -20,11 +20,11 @@ class Step0(Step):
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #internet, tcp
         sock.connect( (uclm_url, uclm_port1) )
-        msg, client = sock.recvfrom(1024)
+        step1_instructions, client = sock.recvfrom(1024)
         sock.close()
 
-        #print("{}"format(msg.decode())    #print the step1 instrucctions
-        code_step1 = msg[:5].decode()
+        #print(step1_instructions.decode())
+        code_step1 = step1_instructions[:5].decode()
 
         print ("Code received from the UCLM server: {0}".format(code_step1))
 

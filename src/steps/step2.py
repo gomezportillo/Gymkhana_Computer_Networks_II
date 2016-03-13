@@ -35,8 +35,9 @@ class Step2(Step):
                 balanced = self.count_parenthesis(op)
 
             if op[0] != '(':
+                #print(op.decode())
                 return op[:5]
-                #break
+                break
 
             result = self.compute_operation(op)
             sock.send(result.encode())

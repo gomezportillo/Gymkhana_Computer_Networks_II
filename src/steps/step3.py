@@ -21,18 +21,17 @@ class Step3(Step):
                                 "\n#### STEP 3: DOWNLOADING FILES THOUGH HTTP\n",
                                 end_format))
 
-        #print(instructions)
         url = "{}{}".format(uclm_url2, code_step3)
         print("Downloading file from {0}\n".format(url))
 
         try:
             my_file = urllib.request.urlopen(urllib.request.Request(url))
 
-            downloaded_file = my_file.read().decode()
+            step4_instructions = my_file.read().decode()
 
-            #print(downloaded_file)
+            #print(step4_instructions)
 
-            code_step4 = downloaded_file[:5]
+            code_step4 = step4_instructions[:5]
 
             return code_step4
 

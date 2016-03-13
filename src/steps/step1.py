@@ -32,7 +32,7 @@ class Step1(Step):
         sock.sendto(my_msg_str.encode(), (uclm_url, uclm_port1) )
         sock.close()
 
-        mutex.wait()
+        mutex.wait()    #waiting the result to be obtained
 
         global uclm_port2
         return uclm_port2
@@ -42,12 +42,12 @@ def myUDPserver():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #internet, udp
     sock.settimeout(4)
     sock.bind( ('', my_UDPserver_port) )
-    msg, client = sock.recvfrom(2048)
+    step2_instructions, client = sock.recvfrom(2048)
     sock.close()
 
-    #print("{}".format(msg.decode())    #printng the 2 step instruccionts
+    #print(step2_instructions.decode())
 
     global uclm_port2
-    uclm_port2 = msg[:4].decode()
+    uclm_port2 = step2_instructions[:4].decode()
 
-    mutex.set()   #announcing you already have the message
+    mutex.set()         #announcing the code has been obtained

@@ -19,8 +19,7 @@
 
 from steps import step0, step1, step2, step3, step4, step5
 
-from aux import my_variables as m_v
-from aux import printing_format as p_f
+from aux.printing_format import green_nd_bold, blue_nd_bold, end_format
 
 import sys
 
@@ -28,9 +27,9 @@ if len(sys.argv) != 1:
     print(__doc__.format(__file__))
     sys.exit(1)
 
-print("{}{}{}{}{}".format(p_f.green_nd_bold, "\n#### PYTHON GYMKHANA\n",
-                          p_f.blue_nd_bold, "\nPedro Manuel Gómez-Portillo López, 2ºA",
-                          p_f.end_format))
+print("{}{}{}{}{}".format(green_nd_bold, "\n#### PYTHON GYMKHANA\n",
+                          blue_nd_bold, "\nPedro Manuel Gómez-Portillo López, 2ºA",
+                          end_format))
 
 step0 = step0.Step0()
 step1 = step1.Step1()
@@ -40,17 +39,17 @@ step4 = step4.Step4()
 step5 = step5.Step5()
 
 try:
-    server_code = step0.run()
+    code_step1 = step0.run()
 
-    step1.run(server_code)
+    code_step2 = step1.run(code_step1)
 
-    step3_instructions = step2.run()
+    code_step3 = step2.run(code_step2)
 
-    downloaded_file = step3.run(step3_instructions)
+    code_step4 = step3.run(code_step3)
 
-    http_instructions = step4.run(downloaded_file)
+    code_step5 = step4.run(code_step4)
 
-    step5.run(http_instructions)
+    step5.run(code_step5)
 
     sys.exit(0)
 

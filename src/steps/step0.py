@@ -3,29 +3,29 @@
 
 import socket
 
-from aux import printing_format as p_f
-from aux import my_variables as m_v
-from steps import step
+from aux.printing_format import green_nd_bold, end_format
+from aux.my_variables import uclm_url, uclm_port1
+from steps.step import Step
 
-class Step0(step.Step):
+class Step0(Step):
 
     def __init(self):
         super().__init__()
 
     def run(self):
 
-        print ("{0}{1}{2}".format(p_f.green_nd_bold,
-                                "\n#### STEP 0: BASIC TCP CONNECTION\n",
-                                p_f.end_format))
+        print ("{}{}{}".format(green_nd_bold,
+                               "\n#### STEP 0: BASIC TCP CONNECTION\n",
+                               end_format))
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #internet, tcp
-        sock.connect( (m_v.uclm_url, m_v.uclm_port1) )
+        sock.connect( (uclm_url, uclm_port1) )
         msg, client = sock.recvfrom(1024)
         sock.close()
 
-        #print("\n\n" + msg.decode())  		#print the step1 instrucctions
-        code = msg[:5].decode()
+        #print("{}"format(msg.decode())    #print the step1 instrucctions
+        code_step1 = msg[:5].decode()
 
-        print ("Code received from the UCLM server: {0}".format(code))
+        print ("Code received from the UCLM server: {0}".format(code_step1))
 
-        return code
+        return code_step1

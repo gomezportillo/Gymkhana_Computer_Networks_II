@@ -25,62 +25,60 @@ class Step2(Step):
         #while the server keeps sending operations
         while True:
 
-            op = ""
+            operation = ""
             balanced = False
 
             #always when using from TCP we must check if we have received the full message somehow
             while not balanced:
-                partial_op, client = sock.recvfrom(1024)
-                op += partial_op.decode()
-                balanced = self.count_parenthesis(op)
+                partial_operation, client = sock.recvfrom(1024)
+                operation += partial_operation.decode()
+                balanced = self.count_parenthesis(operation)
 
-            if op[0] != '(':
-                #print(op.decode())
-                return op[:5]
-                break
+            if operation[0] != '(':
+                #print(operation.decode())
+                return operation[:5]
 
-            result = self.compute_operation(op)
+            result = self.compute_operation(operation)
             sock.send(result.encode())
 
         sock.close()
 
-    def count_parenthesis(self, op):
+    def count_parenthesis(self, operation):
 
         dispared_parenthesis = 0
 
-        for i in range(0, len(op)):
-            if op[i] == '(':
+        for char in operation:
+            if char == '(':
                 dispared_parenthesis += 1
             else:
-                if op[i] == ')':
+                if char == ')':
                     dispared_parenthesis -= 1
-            i+=1
 
         return dispared_parenthesis == 0
 
-    def compute_operation(self, op):
+    def compute_operation(self, operation):
 
-        print("{0}{1}".format("Original\t", op))
+        print("{}{}".format("Original\t", operation))
 
-        str_len = len(op)
+        str_len = len(operation)
         i = 0
 
-        while i<str_len:
-            if op[i] == '/':
-                op = op[:i] + "/" + op[i:]
+        while i < str_len:
+            if operation[i] == '/':
+                operation = operation[:i] + "/" + operation[i:]
                 str_len+=1
                 i+=1
 
             i+=1
 
         try:
-            result = "{}".format(eval(op))
+            result = "{}".format(eval(operation))
         except SyntaxError as err:
             print("{}{}{}".format(red_nd_bold,
-                                "Error recieving operations. Aborting program.\n",
-                                end_format))
+                                  "Error recieving operations. Aborting program.\n",
+                                  end_format))
             sys.exit(1)
 
-        print("{}{}{}{}".format("Worked out\t", op, "\tResult: ", result))
+        print("{}{}{}{}".format("Worked out\t", operation, "\tResult: ", result))
 
         return "({})".format(result)

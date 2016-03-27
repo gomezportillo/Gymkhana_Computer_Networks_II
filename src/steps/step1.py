@@ -18,21 +18,21 @@ class Step1(Step):
 
     def run(self, server_code):
 
-        print("{0}{1}{2}".format(green_nd_bold,
+        print("{}{}{}".format(green_nd_bold,
                                 "\n#### STEP 1: UDP THREADING SERVER\n",
                                 end_format))
 
-        t=threading.Thread(target=myUDPserver)
+        t=threading.Thread(target = myUDPserver)
         t.start()
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #internet, udp
-        my_msg_str = "{} {}".format(server_code,
+        my_message = "{} {}".format(server_code,
                                     my_UDPserver_port)
-        print("My message to the UCML server: {0}\n".format(my_msg_str))
-        sock.sendto(my_msg_str.encode(), (uclm_url, uclm_port1) )
+        print("My message to the UCML server: {0}\n".format(my_message))
+        sock.sendto(my_message.encode(), (uclm_url, uclm_port1) )
         sock.close()
 
-        mutex.wait()    #waiting the result to be obtained
+        mutex.wait()    #waiting the code to be obtained
 
         global uclm_port2
         return uclm_port2

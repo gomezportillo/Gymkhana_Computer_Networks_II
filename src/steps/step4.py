@@ -71,13 +71,13 @@ class Step4(Step):
 
 
         test_checksum = self.compute_checksum(icmp_packet)
-        if test_checksum != 0:
+        if test_checksum is not 0:
             print("{}{}{}{}{}{}".format(red_nd_bold,
-                                      colorfill,
-                                      "Error calculating the checksum. Final checksum: ",
-                                      test_checksum,
-                                      " (should be 0). Exiting program...",
-                                      end_format))
+                                        colorfill,
+                                        "Error calculating the checksum. Final checksum: ",
+                                        test_checksum,
+                                        " (should be 0). Exiting program...",
+                                        end_format))
             sys.exit(1)
 
         return icmp_packet
@@ -89,10 +89,12 @@ class Step4(Step):
         retval = self.sum16(data)                       # sum
         retval = self.sum16(struct.pack('!L', retval))  # one's complement sum
         retval = (retval & 0xFFFF) ^ 0xFFFF             # one's complement
+
         return retval
 
     def sum16(self, data):         #sum all the the 16-bit words in data
 
         if len(data) % 2:
             data += str.encode('\0')
+
         return sum(struct.unpack("!%sH" % (len(data) // 2), data))

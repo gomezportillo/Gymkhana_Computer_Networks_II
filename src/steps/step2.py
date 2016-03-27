@@ -28,13 +28,13 @@ class Step2(Step):
             operation = ""
             balanced = False
 
-            #always when using from TCP we must check if we have received the full message somehow
+            #always when using TCP it must be checked whether the full message has been received
             while not balanced:
                 partial_operation, client = sock.recvfrom(1024)
                 operation += partial_operation.decode()
                 balanced = self.count_parenthesis(operation)
 
-            if operation[0] != '(':
+            if operation[0] is not '(':
                 #print(operation.decode())
                 return operation[:5]
 
@@ -48,37 +48,38 @@ class Step2(Step):
         dispared_parenthesis = 0
 
         for char in operation:
-            if char == '(':
+            if char is '(':
                 dispared_parenthesis += 1
             else:
-                if char == ')':
+                if char is ')':
                     dispared_parenthesis -= 1
 
-        return dispared_parenthesis == 0
+        return dispared_parenthesis is 0
 
     def compute_operation(self, operation):
 
-        print("{}{}".format("Original\t", operation))
+        print("Original\t{}".format(operation))
 
         str_len = len(operation)
         i = 0
 
         while i < str_len:
             if operation[i] == '/':
-                operation = operation[:i] + "/" + operation[i:]
-                str_len+=1
-                i+=1
+                operation = "{}/{}".format(operation[:i], operation[i:])
+                str_len += 1
+                i += 1
 
-            i+=1
+            i += 1
 
         try:
             result = "{}".format(eval(operation))
+
         except SyntaxError as err:
             print("{}{}{}".format(red_nd_bold,
-                                  "Error recieving operations. Aborting program.\n",
+                                  "Error receiving operations. Aborting program.\n",
                                   end_format))
             sys.exit(1)
 
-        print("{}{}{}{}".format("Worked out\t", operation, "\tResult: ", result))
+        print("Worked out\t{}\tResult\t{}".format(operation, result))
 
         return "({})".format(result)

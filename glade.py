@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import os
+import sys
 
 try:
     from gi.repository import Gtk as gtk
@@ -20,7 +21,7 @@ class GUI:
 
         handlers = {
             "solve_gymkhana_button_clicked": self.solve_gymkhana,
-            "menu_quit_": self.exit,
+            "menu_quit": self.exit,
             "menu_about": self.show_about,
         }
 
@@ -30,8 +31,11 @@ class GUI:
         self.window.show()
 
     def solve_gymkhana(self, button):
-        pass
-
+        progress_bar = self.builder.get_object('progress_bar')
+        step = 0.2
+        fraction = round(progress_bar.get_fraction() + step, 1)
+        progress_bar.set_fraction(fraction)
+        progress_bar.set_text('Llevamos un {}%'.format(int(fraction*100)))
 
     def show_about(self, button):
         self.dialog = gtk.AboutDialog()
@@ -43,7 +47,7 @@ class GUI:
         self.dialog.destroy()
 
     def exit(self, button):
-        sys.exit(1)
+        sys.exit(0)
 
 gui = GUI()
 gtk.main()

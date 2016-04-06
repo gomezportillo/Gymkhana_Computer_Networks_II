@@ -72,6 +72,9 @@ class GUI:
         progress_bar.set_fraction(fraction)
         progress_bar.set_text('{} {}%'.format(message, int(fraction*100)))
 
+        while gtk.events_pending(): #force to update the progress bar
+            gtk.main_iteration_do(True)
+
     def reset_progressbar(self):
         progress_bar = self.builder.get_object('progress_bar')
         progress_bar.set_fraction(0)

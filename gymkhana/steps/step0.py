@@ -3,9 +3,9 @@
 
 import socket
 
-from aux.printing_format import green_nd_bold, end_format
-from aux.my_variables import uclm_url, uclm_port1
-from steps.step import Step
+from gymkhana.aux.printing_format import green_nd_bold, end_format
+from gymkhana.aux.my_variables import uclm_url, uclm_port1
+from gymkhana.steps.step import Step
 
 class Step0(Step):
 

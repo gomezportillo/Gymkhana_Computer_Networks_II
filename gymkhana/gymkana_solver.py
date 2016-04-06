@@ -38,20 +38,32 @@ class GymkhanaSolver:
 
     def solve_gymkhana(self):
 
-
+        self.step0 = step0.Step0()
+        self.step1 = step1.Step1()
+        self.step2 = step2.Step2()
+        self.step3 = step3.Step3()
+        self.step4 = step4.Step4()
+        self.step5 = step5.Step5()
 
         try:
+            self.gui.update_message("Solving step 0...", )
             code_step1 = self.step0.run()
-            self.gui.update_message("Resolviendo etapa 1...")
+
+            self.gui.update_message("Solving step 1...")
             code_step2 = self.step1.run(code_step1)
 
+            self.gui.update_message("Solving step 2...")
             code_step3 = self.step2.run(code_step2)
 
+            self.gui.update_message("Solving step 3...")
             code_step4 = self.step3.run(code_step3)
 
+            self.gui.update_message("Solving step 4...")
             code_step5 = self.step4.run(code_step4)
 
+            self.gui.update_message("Solving step 5...")
             self.step5.run(code_step5)
 
+            self.gui.update_message("Gymkhana completed!")
         except KeyboardInterrupt:
             raise

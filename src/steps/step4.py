@@ -25,7 +25,7 @@ class Step4(Step):
             raw_socket = socket.socket(socket.AF_INET,
                                        socket.SOCK_RAW,
                                        socket.getprotobyname('icmp'))
-        except:
+        except PermissionError:
             print("{}{}{}{}".format(red_nd_bold,
                                     colorfill,
                                     "You must execute the program as root user for using RAW shockets. Exiting...\n",
@@ -61,7 +61,7 @@ class Step4(Step):
 
         tmp_header = struct.pack('!bbHHh', 8, 0, 0, 0, 0)
         timestamp = "%x" % int(time.time())
-        icmp_data = str.encode(timestamp) + str.encode(port)
+        icmp_data = str(timestamp).encode() + str(port).encode()
         tmp_packet = tmp_header + icmp_data
 
         my_checksum = self.compute_checksum(tmp_packet)

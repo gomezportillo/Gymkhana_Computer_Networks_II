@@ -4,9 +4,9 @@
 import socket
 import threading
 
-from aux.printing_format import green_nd_bold, end_format
-from aux.my_variables import uclm_url, uclm_port1, my_UDPserver_port
-from steps.step import Step
+from gymkhana.aux.printing_format import green_nd_bold, end_format
+from gymkhana.aux.my_variables import uclm_url, uclm_port1, my_UDPserver_port
+from gymkhana.steps.step import Step
 
 mutex = threading.Event()   #mutex semaphore for thread syncronizing
 uclm_port2 = 0

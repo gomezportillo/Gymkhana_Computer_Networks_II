@@ -6,9 +6,9 @@ from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 import sys
 
-from aux.printing_format import green_nd_bold, end_format
-from aux.my_variables import uclm_url2
-from steps.step import Step
+from gymkhana.aux.printing_format import green_nd_bold, end_format
+from gymkhana.aux.my_variables import uclm_url2
+from gymkhana.steps.step import Step
 
 class Step3(Step):
 

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding:utf-8 -*-
 
 uclm_port1 = 2000
 uclm_port2 = 0

@@ -4,9 +4,9 @@
 import socket
 import sys
 
-from aux.printing_format import green_nd_bold, red_nd_bold, end_format
-from aux.my_variables import uclm_url
-from steps.step import Step
+from gymkhana.aux.printing_format import green_nd_bold, red_nd_bold, end_format
+from gymkhana.aux.my_variables import uclm_url
+from gymkhana.steps.step import Step
 
 class Step2(Step):
 

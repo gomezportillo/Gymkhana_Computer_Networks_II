@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding:utf-8 -*-
 
 bold = '\033[1m'
 colorfill = '\033[7m'

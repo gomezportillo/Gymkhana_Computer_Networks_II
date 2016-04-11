@@ -44,7 +44,7 @@ class GUI:
 
         solve_button.set_sensitive(True)
 
-    def update_message(self, message="Llevamos un", step=0.143):
+    def update_progressbar_message(self, message="Llevamos un ", step=0.143):
         progress_bar = self.builder.get_object('progress_bar')
         fraction = round(progress_bar.get_fraction() + step, 3)
         progress_bar.set_fraction(fraction)

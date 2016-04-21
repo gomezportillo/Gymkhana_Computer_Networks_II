@@ -16,3 +16,6 @@ Brief explanation of steps:
 
 GUI-version running
 ![Screenshot](data/screenshot/gymkhana_gui.gif)
+
+Class diagram
+![ClassDiagram](data/diagrams/class_diagram.png)
